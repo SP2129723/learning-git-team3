@@ -198,6 +198,7 @@
                 console.log(oldPassword)
                 if (document.getElementById("profileForm").checkValidity()) {
                     if (oldPassword != "" && password != "" && repassword != "") {
+                        
                         var memberData = {
                             id: member.id,
                             password: oldPassword
@@ -236,6 +237,9 @@
                         }).catch(function (error) {
                             console.log(error);
                         }); 
+                    }else if(oldPassword == "" && password != "" && repassword != ""){
+                        alert("Old password is empty.");
+                        ok = false;
                     }
 
                     if(ok) {
@@ -268,6 +272,13 @@
                             sessionStorage.setItem("member", JSON.stringify(data));
                             sessionStorage.setItem("memberEmail", data.email);
                             sessionStorage.setItem("memberName", data.name);
+                            sessionStorage.setItem('memberPhone', data.phone);
+                            sessionStorage.setItem('memberCountry', data.city);
+                            sessionStorage.setItem('memberAddress', data.address);
+                            sessionStorage.setItem('memberSecurityQns', data.securityQuestion);
+                            sessionStorage.setItem('memberSecurityAns', data.securityAnswer);
+                            sessionStorage.setItem('memberAge', data.age);
+                            sessionStorage.setItem('memberIncome', data.income);
                             var url = window.location.origin + window.location.pathname;
                             window.location.href = url + '?goodMsg=Successfully Updated!';
                         }).catch(function (error) {
@@ -282,6 +293,7 @@
             function pdpaWindow() {
                 var myWindow = window.open("pdpa.html");
             }
+         
         </script>
         <script src="menu2.js"></script>
         <div role="main" class="main">
@@ -316,7 +328,7 @@
                                         <h4>Personal Information</h4>
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input class="form-control" required="true" id="name" type="text" />
+                                            <input class="form-control" required="true" id="name" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label>E-mail Address</label>
@@ -328,7 +340,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Country</label>
-                                            <select id="country">
+                                            <select id="country" required="true" >
                                                 <option value=""></option>
                                                 <option value="Afganistan">Afghanistan</option>
                                                 <option value="Albania">Albania</option>
@@ -645,5 +657,25 @@
         </div>
     </div>
     <script src="../footer.js"></script>
+    <script>
+            var n2 = sessionStorage.getItem("memberName");
+            var e2 = sessionStorage.getItem("memberEmail");
+            var p2 = sessionStorage.getItem("memberPhone");
+            var c2 = sessionStorage.getItem("memberCountry");
+            var a2 = sessionStorage.getItem("memberAddress");
+            var sq2 = sessionStorage.getItem("memberSecurityQns");
+            var sa2 = sessionStorage.getItem("memberSecurityAns");
+            var age = sessionStorage.getItem("memberAge");
+            var i2 = sessionStorage.getItem("memberIncome");
+            document.getElementById("name").value = n2;
+            document.getElementById("email").value = e2;    
+            document.getElementById("phone").value = p2;
+            document.getElementById("country").value= c2;
+            document.getElementById("address").value= a2;
+            document.getElementById("securityQuestion").value = sq2;
+            document.getElementById("securityAnswer").value = sa2;
+            document.getElementById("age").value = age;
+            document.getElementById("income").value = i2;
+    </script>
 </body>
 </html>

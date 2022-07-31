@@ -55,6 +55,13 @@
                                         sessionStorage.setItem('memberEmail', email);
                                         sessionStorage.setItem('memberName', member.name);
                                         sessionStorage.setItem('member', JSON.stringify(member));
+                                        sessionStorage.setItem('memberPhone', member.phone);
+                                        sessionStorage.setItem('memberCountry', member.city);
+                                        sessionStorage.setItem('memberAddress', member.address);
+                                        sessionStorage.setItem('memberSecurityQns', member.securityQuestion);
+                                        sessionStorage.setItem('memberSecurityAns', member.securityAnswer);
+                                        sessionStorage.setItem('memberAge', member.age);
+                                        sessionStorage.setItem('memberIncome', member.income);
 
                                         //redirect to memberProfile.html
                                         window.location.href = "/B/" + countryPrefix + "/memberProfile.html";
